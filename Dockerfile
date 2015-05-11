@@ -21,3 +21,4 @@ RUN curl -SLO "https://iojs.org/dist/v$IOJS_VERSION/iojs-v$IOJS_VERSION-linux-x6
 RUN     npm install -g gulp
 RUN     npm install -g typescript
 RUN     npm install -g tsd 
+RUN     npm install -g bower
