@@ -8,6 +8,10 @@ RUN     apt-get install -y git
 RUN     apt-get install -y build-essential
 RUN     apt-get install -y wget
 RUN     apt-get install -y python
+RUN     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
+        apt-get clean && \
+        rm -rf /var/cache/apt/* /var/lib/apt/lists/*
+
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys 9554F04D7259F04124DE6B476D5A82AC7E37093B DD8F2338BAE7501E3DD5AC78C273792F7D83545D DBE9B9C5
 
 ENV NPM_CONFIG_LOGLEVEL info
