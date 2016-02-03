@@ -13,7 +13,7 @@ RUN     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
         rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODEJS_VERSION 4.2.1
+ENV NODEJS_VERSION 5.5.0
 RUN curl -SLO "https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz" \
   && tar -xzf "node-v${NODEJS_VERSION}-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
   && rm "node-v${NODEJS_VERSION}-linux-x64.tar.gz"
