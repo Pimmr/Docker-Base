@@ -1,24 +1,63 @@
-FROM    debian:jessie
+FROM mhart/alpine-node
 
-MAINTAINER Tom Hastjarjanto, tom@pimmr.com
+MAINTAINER Ilya Ovdin, ilya@pimmr.com
 
-RUN     apt-get update
-RUN     apt-get install -y curl
-RUN     apt-get install -y git
-RUN     apt-get install -y build-essential
-RUN     apt-get install -y wget
-RUN     apt-get install -y python
-RUN     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
-        apt-get clean && \
-        rm -rf /var/cache/apt/* /var/lib/apt/lists/*
+RUN apk update && apk upgrade
 
-ENV NPM_CONFIG_LOGLEVEL info
-ENV NODEJS_VERSION 5.5.0
-RUN curl -SLO "https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz" \
-  && tar -xzf "node-v${NODEJS_VERSION}-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
-  && rm "node-v${NODEJS_VERSION}-linux-x64.tar.gz"
-RUN     npm install -g gulp@"~3.9"
-RUN     npm install -g typescript@"~1.6"
-RUN     npm install -g tsd@"~0.6"
-RUN     npm install -g buffertools
-RUN     npm install -g lru-cache
+WORKDIR /usr/lib
+
+RUN npm install es6-promise \
+      express \
+      jayson \
+      react \
+      react-dom \
+      react-helmet \
+      react-redux \
+      react-router@^2.0.0-rc5 \
+      react-router-redux \
+      react-transform-hmr \
+      redux \
+      speakingurl \
+      valid-url \
+      whatwg-fetch \
+      winston \
+      babel \
+      babel-runtime \
+      babel-cli \
+      babel-core \
+      babel-eslint \
+      babel-loader \
+      babel-plugin-react-display-name \
+      babel-plugin-react-transform \
+      babel-plugin-transform-runtime \
+      babel-preset-es2015 \
+      babel-preset-react \
+      babel-preset-react-hmre \
+      babel-preset-stage-2 \
+      babel-register \
+      chokidar \
+      cross-env \
+      css-loader \
+      css-modules-require-hook \
+      eslint \
+      eslint-plugin-react \
+      exports-loader \
+      extract-text-webpack-plugin \
+      file-loader \
+      imports-loader \
+      postcss \
+      postcss-modules-extract-imports \
+      postcss-modules-local-by-default \
+      postcss-modules-scope \
+      rimraf \
+      style-loader \
+      url-loader \
+      webpack \
+      webpack-dev-middleware \
+      webpack-hot-middleware \
+      check-types
+
+RUN apk add python make g++
+
+RUN npm install node-sass sass-loader
+
