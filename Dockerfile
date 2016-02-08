@@ -61,3 +61,4 @@ RUN apk add python make g++
 
 RUN npm install node-sass sass-loader
 
+ENV NODE_PATH=/usr/lib/node_modules
