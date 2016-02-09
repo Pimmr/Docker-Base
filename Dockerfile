@@ -1,16 +1,14 @@
-FROM mhart/alpine-node
+FROM mhart/alpine-node:5.5
 
 MAINTAINER Ilya Ovdin, ilya@pimmr.com
 
-RUN apk update && apk upgrade
-
-RUN apk add python make g++
-
 WORKDIR /usr/lib
 
-RUN npm install -g node-gyp typescript
-
-RUN npm install async \
+RUN apk update && \
+    apk upgrade && \
+    apk add python make g++ && \
+    npm install -g node-gyp typescript && \
+    npm install async \
       aws-sdk \
       base62 \
       bcrypt \
@@ -55,6 +53,8 @@ RUN npm install async \
       tslint \
       valid-url \
       winston \
-      xml2js 
+      xml2js && \
+    apk del make gcc g++ python && \
+    rm -rf /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp
 
 ENV NODE_PATH=/usr/lib/node_modules
