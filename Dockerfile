@@ -61,4 +61,6 @@ RUN apk add python make g++
 
 RUN npm install node-sass sass-loader
 
+RUN npm install sprintf-js json-loader
+
 ENV NODE_PATH=/usr/lib/node_modules
