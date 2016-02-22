@@ -63,4 +63,8 @@ RUN npm install node-sass sass-loader
 
 RUN npm install sprintf-js json-loader
 
+RUN npm install react-google-maps react-slick 
+
+RUN npm install eventsource-polyfill
+
 ENV NODE_PATH=/usr/lib/node_modules
